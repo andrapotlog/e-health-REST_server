@@ -4,7 +4,7 @@ const db_connection = mysql
   .createConnection({
     host: "localhost",
     user: "root",
-    database: "e-health",
+    database: "e_health",
     password: "1234",
     port: "3306",
     dateStrings: 'date'
