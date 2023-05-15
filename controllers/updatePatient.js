@@ -14,7 +14,7 @@ exports.updatePatient = async (req, res, next) => {
     const [rows] = await conn.execute(
         "UPDATE patients SET first_name = ?, last_name = ?, email = ?, password = ?, gender = ?, birthdate = ?, address = ?, phone_number = ? " +
         "WHERE id_patient=?",
-        [req.query.first_name,
+        [/* req.query.first_name,
           req.query.last_name,
           req.query.email,
           req.query.password,
@@ -22,15 +22,16 @@ exports.updatePatient = async (req, res, next) => {
           req.query.birthdate,
           req.query.address,
           req.query.phone_number,
-          req.query.id
-          /* req.body.first_name,
+          req.query.id */
+          req.body.first_name,
           req.body.last_name,
           req.body.email,
           req.body.password,
           req.body.gender,
           req.body.birthdate,
           req.body.address,
-          req.body.phone_number */]
+          req.body.phone_number,
+          req.body.id]
       );
 
     if (rows.affectedRows === 1) {

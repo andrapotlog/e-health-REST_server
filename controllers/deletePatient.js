@@ -9,7 +9,7 @@ exports.deletePatient = async (req, res, next) => {
     return res.status(422).json({ errors: errors.array() });
   }
 
-  const userId = req.query.id;
+  const userId = req.body.id;
 
   try{
     // Inserting the new user into the database
