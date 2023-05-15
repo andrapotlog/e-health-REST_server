@@ -12,7 +12,7 @@ exports.updatePatient = async (req, res, next) => {
   try{
     // Inserting the new user into the database
     const [rows] = await conn.execute(
-        "UPDATE patients SET first_name = ?, last_name = ?, email = ?, password = ?, gender = ?, birthdate = ?, address = ?, phone_number = ? " +
+        "UPDATE patients SET first_name = ?, last_name = ?, gender = ?, birthdate = ?, address = ?, phone_number = ? " +
         "WHERE id_patient=?",
         [/* req.query.first_name,
           req.query.last_name,
@@ -25,8 +25,6 @@ exports.updatePatient = async (req, res, next) => {
           req.query.id */
           req.body.first_name,
           req.body.last_name,
-          req.body.email,
-          req.body.password,
           req.body.gender,
           req.body.birthdate,
           req.body.address,
