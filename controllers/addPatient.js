@@ -8,10 +8,10 @@ exports.addPatient = async (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  /* console.log(req.body);*/
+  console.log(req.body);
   console.log(req.query); 
   
-  const email = req.query.email;
+  const email = req.body.email;
 
   try{
     // Searching in the database for the email to see if it taken
@@ -31,22 +31,22 @@ exports.addPatient = async (req, res, next) => {
     const [rows] = await conn.execute(
         "INSERT INTO patients (first_name, last_name, email, password, gender, birthdate, address, phone_number)" +
         "VALUES (?, ?,?, ?, ?, ?, ?, ?)",
-        [req.query.first_name,
+        [/* req.query.first_name,
           req.query.last_name,
           req.query.email,
           req.query.password,
           req.query.gender,
           req.query.birthdate,
           req.query.address,
-          req.query.phone_number
-          /* req.body.first_name,
+          req.query.phone_number */
+          req.body.first_name,
           req.body.last_name,
           req.body.email,
           req.body.password,
           req.body.gender,
           req.body.birthdate,
           req.body.address,
-          req.body.phone_number */]
+          req.body.phone_number]
       );
 
     if (rows.affectedRows === 1) {
